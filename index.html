@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>K Navaneeth Kumar · minimal portfolio</title>
+  <!-- neutral, clean sans; no gradients, just flat colour blocks -->
+  <style>
+    /* ---------- RESET & GLOBAL ---------- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #fafafc;   /* very light neutral background */
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.5;
+      color: #1e1e2a;
+      padding: 2rem 1rem;
+    }
+
+    .container {
+      max-width: 1050px;
+      margin: 0 auto;
+      background-color: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.02), 0 2px 6px rgba(0,20,40,0.02);
+      padding: 2.5rem 2rem;
+    }
+
+    /* lightly energetic accent — soft but fresh blue */
+    .accent-color {
+      color: #2563eb;    /* vivid medium blue, clean */
+    }
+    .accent-bg-light {
+      background-color: #eef2ff;   /* very subtle blue background */
+    }
+    .accent-border {
+      border-color: #2563eb;
+    }
+    hr.accent-hr {
+      border: 0;
+      height: 2px;
+      background-color: #2563eb;
+      width: 50px;
+      margin: 1.25rem 0 1.5rem 0;
+    }
+
+    /* ---------- TYPOGRAPHY & SPACING ---------- */
+    h1 {
+      font-size: 2.8rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      color: #181826;
+    }
+
+    h2 {
+      font-size: 1.6rem;
+      font-weight: 550;
+      letter-spacing: -0.01em;
+      margin-bottom: 1rem;
+      color: #181826;
+    }
+
+    h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+      color: #1e1e2a;
+    }
+
+    .subhead {
+      font-size: 1.2rem;
+      color: #4b4b5c;
+      margin-top: 0.25rem;
+      font-weight: 400;
+    }
+
+    /* contact row */
+    .contact-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.8rem;
+      margin: 1.5rem 0 1rem 0;
+      font-size: 1rem;
+      border-top: 1px solid #e2e6eb;
+      border-bottom: 1px solid #e2e6eb;
+      padding: 0.9rem 0;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #2c2c3a;
+    }
+
+    .contact-item i { font-style: normal; font-weight: 400; opacity: 0.8; }
+
+    /* chips / tags */
+    .skill-tag {
+      display: inline-block;
+      background-color: #eef2ff;   /* very light blue background */
+      color: #1e2a4a;
+      padding: 0.3rem 0.9rem;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin: 0.25rem 0.25rem 0 0;
+      border: 1px solid #d9e0ef;
+    }
+
+    .skill-section {
+      margin: 2rem 0 1.8rem 0;
+    }
+
+    .skill-category {
+      font-weight: 600;
+      color: #2563eb;           /* accent for category titles */
+      margin-right: 0.5rem;
+    }
+
+    /* card for experience / education */
+    .card {
+      margin-bottom: 2rem;
+      border-left: 3px solid #2563eb;
+      padding-left: 1.3rem;
+      padding-bottom: 0.5rem;
+    }
+
+    .card-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 0.3rem;
+    }
+
+    .card-title {
+      font-size: 1.2rem;
+      font-weight: 650;
+      color: #181826;
+    }
+
+    .card-sub {
+      font-weight: 500;
+      color: #2563eb;           /* subtle energy */
+    }
+
+    .card-date {
+      color: #5b5b70;
+      font-size: 0.9rem;
+      font-weight: 400;
+    }
+
+    .company {
+      font-weight: 500;
+      color: #2a2a3c;
+      margin-bottom: 0.8rem;
+    }
+
+    .bullet-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .bullet-list li {
+      margin-bottom: 0.55rem;
+      padding-left: 1.4rem;
+      position: relative;
+      color: #2d2d3a;
+    }
+
+    .bullet-list li::before {
+      content: "•";
+      color: #2563eb;
+      font-weight: 700;
+      font-size: 1.3rem;
+      position: absolute;
+      left: 0;
+      top: -0.2rem;
+    }
+
+    /* education row */
+    .edu-item {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: baseline;
+      border-bottom: 1px solid #eceff3;
+      padding: 1rem 0;
+    }
+    .edu-item:last-child {
+      border-bottom: none;
+    }
+    .edu-degree {
+      font-weight: 650;
+      color: #181826;
+    }
+    .edu-school {
+      color: #3f3f54;
+      font-weight: 450;
+    }
+    .edu-meta {
+      color: #5b5b70;
+      font-size: 0.95rem;
+    }
+
+    /* project list (inside experience) */
+    .project-badge {
+      font-size: 0.8rem;
+      background-color: #e6e9f0;
+      padding: 0.2rem 0.8rem;
+      border-radius: 16px;
+      display: inline-block;
+      margin: 0.5rem 0 0.25rem;
+      color: #1e1e2e;
+      border: 1px solid #cdd5e0;
+    }
+
+    /* profile summary */
+    .summary {
+      background-color: #f8f9ff;  /* extremely light blue-ish */
+      padding: 1.4rem 1.6rem;
+      border-radius: 18px;
+      margin: 1.2rem 0 2rem 0;
+      border: 1px solid #e1e8f5;
+      font-size: 1.05rem;
+      color: #232336;
+    }
+
+    /* simple divider */
+    .divider {
+      margin: 2rem 0 1.5rem;
+      height: 1px;
+      background: #e3e7ef;
+      width: 100%;
+    }
+
+    /* footer / contact again */
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid #e3e7ef;
+      font-size: 0.95rem;
+    }
+
+    .footer-links a {
+      text-decoration: none;
+      color: #2563eb;
+      font-weight: 500;
+    }
+
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+
+    /* responsiveness */
+    @media (max-width: 600px) {
+      .container { padding: 1.8rem 1.2rem; }
+      h1 { font-size: 2.2rem; }
+      .contact-bar { gap: 1rem; flex-direction: column; align-items: flex-start; }
+    }
+
+    /* tiny icon simulation — using text only, but we keep minimal */
+    .emoji-icon {
+      font-size: 1.2rem;
+      filter: none;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <!-- HEADER: name + title -->
+  <div>
+    <h1>K Navaneeth Kumar</h1>
+    <div class="subhead">Full‑Stack Developer · scalable web, real‑time & cloud</div>
+  </div>
+
+  <!-- contact information – no icons, just clean text -->
+  <div class="contact-bar">
+    <span class="contact-item"><span class="emoji-icon">📧</span> kurvanavaneethkumar@gmail.com</span>
+    <span class="contact-item"><span class="emoji-icon">📞</span> +91-8106027123</span>
+    <span class="contact-item"><span class="emoji-icon">📍</span> Telangana, India</span>
+  </div>
+
+  <!-- Professional Summary – light energetic background (flat) -->
+  <div class="summary">
+    <span style="font-weight:600; color:#2563eb;">Full‑Stack Developer</span> specializing in scalable web applications using JavaScript, React.js, Node.js, and Python. Experienced in building real‑time collaborative platforms using WebSockets, developing REST APIs, and designing cloud‑based systems with AWS S3. Built production‑grade audio annotation and processing platforms with real‑time collaboration and efficient data pipelines.
+  </div>
+
+  <!-- Core Technical Skills – as chips + categories -->
+  <div class="skill-section">
+    <h2>Core technical skills</h2>
+    <!-- programming languages -->
+    <div style="margin-bottom: 1rem;">
+      <span class="skill-category">Languages:</span>
+      <span class="skill-tag">JavaScript</span>
+      <span class="skill-tag">Python</span>
+      <span class="skill-tag">HTML5</span>
+      <span class="skill-tag">CSS3</span>
+      <span class="skill-tag">ES6+</span>
+    </div>
+    <div style="margin-bottom: 1rem;">
+      <span class="skill-category">Frontend:</span>
+      <span class="skill-tag">React.js</span>
+      <span class="skill-tag">Responsive design</span>
+      <span class="skill-tag">DOM manipulation</span>
+      <span class="skill-tag">Figma</span>
+      <span class="skill-tag">UI/UX</span>
+    </div>
+    <div style="margin-bottom: 1rem;">
+      <span class="skill-category">Backend & DB:</span>
+      <span class="skill-tag">Node.js</span>
+      <span class="skill-tag">Express.js</span>
+      <span class="skill-tag">Python Flask</span>
+      <span class="skill-tag">REST API</span>
+      <span class="skill-tag">MongoDB</span>
+      <span class="skill-tag">WebSockets</span>
+    </div>
+    <div style="margin-bottom: 1rem;">
+      <span class="skill-category">DevOps & tools:</span>
+      <span class="skill-tag">Linux</span>
+      <span class="skill-tag">Nginx</span>
+      <span class="skill-tag">Gunicorn</span>
+      <span class="skill-tag">AWS S3</span>
+      <span class="skill-tag">Git/GitHub</span>
+      <span class="skill-tag">Application deployment</span>
+    </div>
+    <!-- design skill line -->
+    <div>
+      <span class="skill-category">Design:</span>
+      <span class="skill-tag">UI/UX design</span>
+      <span class="skill-tag">Figma</span>
+      <span class="skill-tag">Graphic design</span>
+    </div>
+  </div>
+
+  <hr class="accent-hr" />
+
+  <!-- Professional Experience -->
+  <h2>Professional experience</h2>
+  <div class="card">
+    <div class="card-header">
+      <span class="card-title">Full‑Stack Developer</span>
+      <span class="card-date">(remote)</span>
+    </div>
+    <div class="company" style="display: flex; justify-content: space-between; flex-wrap: wrap;">
+      <span><span class="card-sub">Shunyavigan Private Limited</span> — Audio Annotation Platform</span>
+    </div>
+    <!-- tech stack line: small badge style -->
+    <div style="margin-bottom: 1rem;">
+      <span class="project-badge">React.js · Node.js · Express.js · WebSockets · AWS S3</span>
+    </div>
+
+    <ul class="bullet-list">
+      <li>Built a full‑stack web‑based audio annotation platform similar to Praat that allows annotators to record, visualize, and annotate audio directly within the browser.</li>
+      <li>Developed an interactive React.js interface enabling waveform playback, zooming, segment selection, and phonetic labeling during audio annotation.</li>
+      <li>Implemented real‑time collaborative annotation using WebSockets allowing multiple annotators to view and update annotations simultaneously.</li>
+      <li>Designed backend APIs using Node.js and Express.js to process audio files and manage annotation workflows.</li>
+      <li>Implemented audio processing pipelines including slowing down WAV files and generating Praat‑compatible TextGrid annotation files.</li>
+      <li>Built a browser‑based audio recording pipeline capturing microphone input and securely uploading recordings to backend servers.</li>
+      <li>Integrated AWS S3 cloud storage to store recorded audio datasets and finalized annotated files.</li>
+      <li>Designed a dataset distribution system with pagination to assign audio files to annotators efficiently.</li>
+      <li>Built automated dataset pipelines that upload finalized annotated files to cloud storage for speech recognition and machine learning workflows.</li>
+    </ul>
+  </div>
+
+  <!-- Education -->
+  <h2 style="margin-top: 2rem;">Education</h2>
+  <div class="edu-item">
+    <div>
+      <span class="edu-degree">B.Tech — Electronics and Communication Engineering</span>
+      <span class="edu-school">  ·  JNTUH College of Engineering, Rajanna Sircilla</span>
+    </div>
+    <div class="edu-meta">2021 – 2025 · CGPA: 7.9</div>
+  </div>
+
+  <!-- optional: quick links / minimal contact again (without gradient) -->
+  <div class="footer-links">
+    <span>📬 <a href="#">kurvanavaneethkumar@gmail.com</a></span>
+    <span>🖧 <a href="#">github.com/yourhandle</a></span>   <!-- replace with actual if needed, but kept generic -->
+    <span>🔗 <a href="#">linkedin.com/in/navaneeth</a></span>
+  </div>
+
+  <!-- very subtle javascript: console info / dynamic year, but stays minimal -->
+  <script>
+    (function() {
+      // just a tiny interactive: show current year in console (no visual changes)
+      const year = new Date().getFullYear();
+      console.log(`🚀 K Navaneeth Kumar portfolio · ${year}`);
+      // optional: you can add any lightweight DOM update (like "last updated")
+      // but we keep it invisible to stay minimal. maybe a gentle console only.
+    })();
+  </script>
+  <!-- absolutely no gradients, only flat colors & blue accent -->
+</div>
+<!-- extra micro interaction: hover on skill tags just slight background change (still flat) -->
+</body>
+</html>
